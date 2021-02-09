@@ -1,0 +1,917 @@
+{
+    "cmsType": "sanity",
+    "staticDir": "public",
+    "pagesDir": "content/pages",
+    "dataDir": "content/data",
+    "uploadDir": "images",
+    "pageContentFieldKey": "content",
+    "objectTypeKey": "type",
+    "dataset": "production",
+    "models": [
+        {
+            "type": "data",
+            "label": "Site Configuration",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Title",
+                    "description": "Site title",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "path_prefix",
+                    "label": "Base URL",
+                    "description": "The base URL of this site. Useful for sites hosted under specific path, e.g.: https://www.example.com/my-site/",
+                    "required": true,
+                    "hidden": true
+                },
+                {
+                    "type": "image",
+                    "name": "favicon",
+                    "label": "Favicon",
+                    "description": "A square icon that represents your website"
+                },
+                {
+                    "type": "string",
+                    "name": "description",
+                    "label": "Site Description",
+                    "description": "The default site description used in meta data"
+                },
+                {
+                    "type": "model",
+                    "name": "header",
+                    "label": "Header Configuration",
+                    "models": [
+                        "header"
+                    ]
+                },
+                {
+                    "type": "model",
+                    "name": "footer",
+                    "label": "Footer Configuration",
+                    "models": [
+                        "footer"
+                    ]
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_file_path",
+                    "label": "Site Configuration File Path",
+                    "description": "The file path of the file that stores this data",
+                    "const": "content/data/config.json",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "data",
+                    "hidden": true
+                }
+            ],
+            "file": "config.json",
+            "name": "config",
+            "hideContent": true
+        },
+        {
+            "type": "object",
+            "label": "Header Configuration",
+            "labelField": "title",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Header Title",
+                    "description": "The title displayed in the header"
+                },
+                {
+                    "type": "boolean",
+                    "name": "has_nav",
+                    "label": "Enable Navigation Menu",
+                    "description": "Display the navigation bar in the header",
+                    "default": true
+                },
+                {
+                    "type": "list",
+                    "name": "nav_links",
+                    "label": "Navigation Links",
+                    "description": "List of navigation links",
+                    "items": {
+                        "type": "model",
+                        "models": [
+                            "action"
+                        ]
+                    }
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "header",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "header",
+            "hideContent": true
+        },
+        {
+            "type": "object",
+            "label": "Footer Configuration",
+            "labelField": "content",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "content",
+                    "label": "Footer Content",
+                    "description": "The copyright text displayed in the footer"
+                },
+                {
+                    "type": "list",
+                    "name": "links",
+                    "label": "Links",
+                    "description": "List of links in the footer",
+                    "items": {
+                        "type": "model",
+                        "models": [
+                            "action"
+                        ]
+                    }
+                },
+                {
+                    "type": "boolean",
+                    "name": "has_social",
+                    "label": "Enable Social Links",
+                    "description": "Display social links in the footer",
+                    "default": true
+                },
+                {
+                    "type": "list",
+                    "name": "social_links",
+                    "label": "Social Links",
+                    "description": "List of social links in the footer",
+                    "items": {
+                        "type": "model",
+                        "models": [
+                            "action"
+                        ]
+                    }
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "footer",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "footer",
+            "hideContent": true
+        },
+        {
+            "type": "data",
+            "file": "author.json",
+            "label": "Author",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "name",
+                    "label": "Name"
+                },
+                {
+                    "type": "string",
+                    "name": "email",
+                    "label": "Email"
+                },
+                {
+                    "type": "image",
+                    "name": "avatar",
+                    "label": "Author Image"
+                },
+                {
+                    "type": "string",
+                    "name": "avatar_alt",
+                    "label": "Author Image Alt Text",
+                    "description": "The alt text of the author image"
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_file_path",
+                    "label": "Author File Path",
+                    "description": "The file path of the file that stores this data",
+                    "const": "content/data/author.json",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "data",
+                    "hidden": true
+                }
+            ],
+            "name": "author",
+            "hideContent": true
+        },
+        {
+            "type": "page",
+            "label": "Advanced Page",
+            "hideContent": true,
+            "layout": "advanced",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Title",
+                    "description": "The title of the page",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "excerpt",
+                    "label": "Excerpt",
+                    "description": "The excerpt of the page displayed in meta data"
+                },
+                {
+                    "type": "list",
+                    "name": "sections",
+                    "label": "Sections",
+                    "description": "Page sections",
+                    "items": {
+                        "type": "model",
+                        "labelField": "title",
+                        "models": [
+                            "section_content",
+                            "section_hero",
+                            "section_posts"
+                        ]
+                    }
+                },
+                {
+                    "type": "string",
+                    "name": "layout",
+                    "label": "Layout",
+                    "const": "advanced",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_url_path",
+                    "label": "URL Path",
+                    "description": "The URL path of this page relative to site root. For example, the site root page would be \"/\", and post page would be \"posts/new-post/\"",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_dir",
+                    "label": "Directory",
+                    "description": "The directory path where this file is stored",
+                    "const": "content/pages",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "page",
+                    "hidden": true
+                }
+            ],
+            "name": "advanced"
+        },
+        {
+            "type": "page",
+            "label": "Page",
+            "layout": "page",
+            "exclude": "posts/**",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Title",
+                    "description": "The title of the page",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "subtitle",
+                    "label": "Subtitle",
+                    "description": "The text displayed just below the title"
+                },
+                {
+                    "type": "string",
+                    "name": "excerpt",
+                    "label": "Excerpt",
+                    "description": "The excerpt of the page displayed in meta data"
+                },
+                {
+                    "type": "string",
+                    "name": "layout",
+                    "label": "Layout",
+                    "const": "page",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_url_path",
+                    "label": "URL Path",
+                    "description": "The URL path of this page relative to site root. For example, the site root page would be \"/\", and post page would be \"posts/new-post/\"",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_dir",
+                    "label": "Directory",
+                    "description": "The directory path where this file is stored",
+                    "const": "content/pages",
+                    "hidden": true
+                },
+                {
+                    "type": "markdown",
+                    "name": "content",
+                    "label": "Content",
+                    "description": "Page content"
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "page",
+                    "hidden": true
+                }
+            ],
+            "name": "page"
+        },
+        {
+            "type": "page",
+            "urlPath": "/posts/{slug}",
+            "label": "Post",
+            "folder": "posts",
+            "layout": "post",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Title",
+                    "description": "The title of the post",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "subtitle",
+                    "label": "Subtitle",
+                    "description": "The text displayed just below the title"
+                },
+                {
+                    "type": "image",
+                    "name": "content_img_path",
+                    "label": "Image (single post)",
+                    "description": "The image displayed in the single post"
+                },
+                {
+                    "type": "string",
+                    "name": "content_img_alt",
+                    "label": "Image alt text (single post)",
+                    "description": "The alt text of the blog feed image"
+                },
+                {
+                    "type": "image",
+                    "name": "thumb_img_path",
+                    "label": "Image (blog feed)",
+                    "description": "The image displayed in the blog feed"
+                },
+                {
+                    "type": "string",
+                    "name": "thumb_img_alt",
+                    "label": "Image alt text (blog feed)",
+                    "description": "The alt text of the blog feed image"
+                },
+                {
+                    "type": "string",
+                    "name": "excerpt",
+                    "label": "Excerpt",
+                    "description": "The excerpt of the post displayed in the blog feed and in meta data"
+                },
+                {
+                    "type": "date",
+                    "name": "date",
+                    "label": "Date",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "layout",
+                    "label": "Layout",
+                    "const": "post",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_url_path",
+                    "label": "URL Path",
+                    "description": "The URL path of this page relative to site root. For example, the site root page would be \"/\", and post page would be \"posts/new-post/\"",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_dir",
+                    "label": "Directory",
+                    "description": "The directory path where this file is stored",
+                    "const": "content/pages",
+                    "hidden": true
+                },
+                {
+                    "type": "markdown",
+                    "name": "content",
+                    "label": "Content",
+                    "description": "Page content"
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "page",
+                    "hidden": true
+                }
+            ],
+            "name": "post"
+        },
+        {
+            "type": "object",
+            "label": "Action",
+            "labelField": "label",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "label",
+                    "label": "Label",
+                    "required": true
+                },
+                {
+                    "type": "string",
+                    "name": "url",
+                    "label": "URL",
+                    "required": true,
+                    "widget": "url"
+                },
+                {
+                    "type": "boolean",
+                    "name": "new_window",
+                    "label": "Open in new tab/window",
+                    "default": false
+                },
+                {
+                    "type": "boolean",
+                    "name": "no_follow",
+                    "label": "No follow",
+                    "default": false,
+                    "description": "Add rel=\"nofollow\" attribute to the link"
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "action",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "action",
+            "hideContent": true
+        },
+        {
+            "type": "object",
+            "label": "Content Section",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Section Title",
+                    "description": "The section title (Used by the CMS, even if it is not displayed in the section)"
+                },
+                {
+                    "type": "string",
+                    "name": "section_id",
+                    "label": "Element ID",
+                    "description": "A unique identifier that can be used when linking to this section. Must not contain whitespace."
+                },
+                {
+                    "type": "image",
+                    "name": "image",
+                    "label": "Image",
+                    "description": "The image of the section"
+                },
+                {
+                    "type": "string",
+                    "name": "image_alt",
+                    "label": "Image Alt Text",
+                    "description": "The alt text of the section image"
+                },
+                {
+                    "type": "markdown",
+                    "name": "content",
+                    "label": "Content",
+                    "description": "The text content of the section"
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "section_content",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "section_content",
+            "labelField": "title",
+            "hideContent": true
+        },
+        {
+            "type": "object",
+            "label": "Hero Section",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Section Title",
+                    "description": "The section title (Used by the CMS, even if it is not displayed in the section)"
+                },
+                {
+                    "type": "string",
+                    "name": "section_id",
+                    "label": "Element ID",
+                    "description": "A unique identifier that can be used when linking to this section. Must not contain whitespace."
+                },
+                {
+                    "type": "markdown",
+                    "name": "subtitle",
+                    "label": "Subtitle",
+                    "description": "The section subtitle"
+                },
+                {
+                    "type": "image",
+                    "name": "image",
+                    "label": "Image",
+                    "description": "The image to display with the text"
+                },
+                {
+                    "type": "string",
+                    "name": "image_alt",
+                    "label": "Image Alt Text",
+                    "description": "The alt text of the image"
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "section_hero",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "section_hero",
+            "labelField": "title",
+            "hideContent": true
+        },
+        {
+            "type": "object",
+            "label": "Posts Section",
+            "fields": [
+                {
+                    "type": "string",
+                    "name": "title",
+                    "label": "Section Title",
+                    "description": "The section title (Used by the CMS, even if it is not displayed in the section)"
+                },
+                {
+                    "type": "string",
+                    "name": "section_id",
+                    "label": "Element ID",
+                    "description": "A unique identifier that can be used when linking to this section. Must not contain whitespace."
+                },
+                {
+                    "type": "boolean",
+                    "name": "has_more_link",
+                    "label": "Show read more link",
+                    "description": "Display the read more link below the post excerpt",
+                    "default": true
+                },
+                {
+                    "type": "string",
+                    "name": "more_link_text",
+                    "label": "Read more link label"
+                },
+                {
+                    "type": "string",
+                    "name": "type",
+                    "label": "Object Type",
+                    "description": "The type of the object",
+                    "const": "section_posts",
+                    "hidden": true
+                },
+                {
+                    "type": "string",
+                    "name": "stackbit_model_type",
+                    "label": "Stackbit Model Type",
+                    "description": "Stackbit model type",
+                    "const": "object",
+                    "hidden": true
+                }
+            ],
+            "name": "section_posts",
+            "labelField": "title",
+            "hideContent": true
+        }
+    ],
+    "content": [
+        {
+            "modelType": "data",
+            "modelName": "config",
+            "relPath": "config.json",
+            "data": {
+                "stackbit_model_type": "data",
+                "title": "Stackbit Vanilla Theme",
+                "path_prefix": "/",
+                "description": "A vanilla theme for Stackbit",
+                "header": {
+                    "type": "header",
+                    "title": "Stackbit Vanilla",
+                    "has_nav": true,
+                    "nav_links": [
+                        {
+                            "type": "action",
+                            "label": "Home",
+                            "url": "/",
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "Generic",
+                            "url": "/generic/",
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "Elements",
+                            "url": "/elements/",
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "Ipsum",
+                            "url": "/ipsum/",
+                            "stackbit_model_type": "object"
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "footer": {
+                    "type": "footer",
+                    "content": "&copy; Stackbit. All rights reserved. This Jamstack site was created with <a href=\"https://www.stackbit.com/?utm_source=deployed-footer\" target=\"_blank\" rel=\"noopener\">Stackbit</a>. Create yours <a href=\"https://app.stackbit.com/create?theme=vanilla&utm_source=deployed-footer\" target=\"_blank\" rel=\"noopener\">now</a>",
+                    "has_social": true,
+                    "social_links": [
+                        {
+                            "type": "action",
+                            "label": "Twitter",
+                            "url": "https://twitter.com/",
+                            "new_window": true,
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "Instagram",
+                            "url": "https://www.instagram.com/",
+                            "new_window": true,
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "GitHub",
+                            "url": "https://github.com/",
+                            "new_window": true,
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "LinkedIn",
+                            "url": "https://www.linkedin.com/",
+                            "new_window": true,
+                            "stackbit_model_type": "object"
+                        },
+                        {
+                            "type": "action",
+                            "label": "DEV",
+                            "url": "https://dev.to/",
+                            "new_window": true,
+                            "stackbit_model_type": "object"
+                        }
+                    ],
+                    "stackbit_model_type": "object"
+                },
+                "stackbit_file_path": "content/data/config.json"
+            }
+        },
+        {
+            "modelType": "data",
+            "modelName": "author",
+            "relPath": "author.json",
+            "data": {
+                "stackbit_model_type": "data",
+                "name": "Stackbit Vanilla",
+                "email": "email@example.com",
+                "avatar": "images/avatar.png",
+                "avatar_alt": "Author avatar",
+                "stackbit_file_path": "content/data/author.json"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "page",
+            "relPath": "elements.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "UI Kit",
+                "subtitle": "Vanilla styleguide.",
+                "layout": "page",
+                "stackbit_url_path": "/elements",
+                "stackbit_dir": "content/pages",
+                "content": "\n# This is an H1\n## This is an H2\n### This is an H3\n#### This is an H4\n##### This is an H5\n###### This is an H6\n\nDonec malesuada, augue eu blandit porta, metus metus auctor leo, non dapibus felis odio non tortor. Mauris sem orci, tristique eget [this is an inline link](https://www.google.com) placerat non, eleifend tempor dolor. Quisque sed nisl elit. Praesent pulvinar id urna quis cursus. In hac habitasse platea dictumst. Mauris sed odio magna. Duis felis turpis, posuere at erat nec, condimentum luctus nibh. Nam leo ante, tempor ut tellus vel, lacinia aliquam velit. Mauris ut purus in nisl suscipit feugiat.\n\n***\n\nPellentesque tempor aliquet dolor, ac consectetur lorem ornare id. Vestibulum sit amet facilisis elit, sit amet rhoncus felis. Nunc rhoncus porttitor sollicitudin. Quisque eu leo metus. Curabitur gravida nibh eu\n\n### Unordered List\n\n- Here are some bullet points\n- Here are some bullet points\n- This is a really long bullet point that wraps to multiple lines. Nunc tempus suscipit. Donec quis magna id lacus eleifend volutpat. Suspendisse ac mattis velit, vel sagittis metus. Etiam non massa eu lectus maximus elementum. Etiam id aliquet quam. Vestibulum id lacinia ex, in rutrum metus. Donec varius auctor ligula.\n- Here are some bullet points\n- Here are some bullet points\n\n### Ordered List\n\n1. Donec non tortor in arcu mollis feugiat\n2. Lorem ipsum dolor sit amet, consectetuer adipiscing elit\n3. Donec id eros eget quam aliquam gravida\n4. Vivamus convallis urna id felis\n5. Nulla porta tempus sapien\n\n### Quoting\n\nNunc tempus suscipit. Donec quis magna id lacus eleifend volutpat. Suspendisse ac mattis velit, vel sagittis metus. Etiam non massa eu lectus maximus elementum. Etiam id aliquet quam. Vestibulum id lacinia ex, in rutrum metus. Donec varius auctor ligula.\n\n> \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices dignissim gravida. Curabitur pharetra turpis risus, eu bibendum ipsum maximus sed. Ut vel euismod elit. Proin neque erat, sagittis quis tortor ut, pharetra semper ligula. Nunc vehicula, diam in consectetur vestibulum, sem felis imperdiet nisi, ac interdum mi erat sit amet sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi ut nulla ornare, posuere ligula eget, convallis elit. Nullam cursus vel ex et lacinia. Nunc feugiat dictum purus, faucibus malesuada risus gravida a. Morbi a sagittis lectus. Nullam lacus mauris, luctus eget pharetra in, aliquet quis lorem. Morbi ornare rhoncus dapibus. Praesent eu ipsum a metus pretium dictum. Fusce egestas nibh mauris, at condimentum ex fringilla quis. Duis in accumsan orci. Morbi leo ligula, tincidunt ac diam ut, hendrerit lobortis metus.\"\n\nSed sit amet enim placerat, faucibus nisl et, porta ipsum. Integer efficitur nulla id orci varius, in lobortis magna viverra. Praesent volutpat nunc velit, eget dignissim orci sagittis vitae. Aliquam erat volutpat. Praesent sollicitudin, enim nec interdum suscipit, ipsum augue varius massa, in vestibulum ante urna quis orci. Cras tristique mollis pellentesque. Sed maximus massa at nisl lobortis efficitur vel nec risus. Aenean tincidunt et lectus vel dapibus. Fusce pellentesque id felis id faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet nibh non elit vulputate placerat. Sed vitae lacinia ligula. Sed suscipit eu nulla sit amet feugiat. Nullam ut ultricies nulla, at convallis massa.\n\n### Inline Code and Code Blocks\n\nBlocks of code are either fenced by lines with `three back-ticks`, or are indented `with four spaces`.\n\n```\n<!-- Some example CSS code -->\nh1 {\n    font-size: 2.5rem;\n}\n```\n\nInline `code` has `back-ticks around` it.\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "page",
+            "relPath": "generic.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Just a Generic Page",
+                "subtitle": "Just a generic subtitle for the page",
+                "layout": "page",
+                "stackbit_url_path": "/generic",
+                "stackbit_dir": "content/pages",
+                "content": "\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla orci diam, elementum consectetur elit non, tempus varius leo. In ut bibendum mauris. Vestibulum mattis pharetra enim. Maecenas ornare vulputate nisi sed condimentum. Fusce sit amet cursus nunc. Vivamus malesuada posuere mollis. Aliquam facilisis neque eget ligula aliquam consequat.\n\n![Block Image](/images/art.svg)\n\nPellentesque tempor aliquet dolor, ac consectetur lorem ornare id. Vestibulum sit amet facilisis elit, sit amet rhoncus felis. Nunc rhoncus porttitor sollicitudin. Quisque eu leo metus. Curabitur gravida nibh eu nunc tempus suscipit. Donec quis magna id lacus eleifend volutpat. Suspendisse ac mattis velit, vel sagittis metus. Etiam non massa eu lectus maximus elementum. Etiam id aliquet quam. Vestibulum id lacinia ex, in rutrum metus. Donec varius auctor ligula.\n\n## This is a H2. Great for dividing content sections.\n\nSed sit amet enim placerat, faucibus nisl et, porta ipsum. Integer efficitur nulla id orci varius, in lobortis magna viverra. Praesent volutpat nunc velit, eget dignissim orci sagittis vitae. Aliquam erat volutpat. Praesent sollicitudin, enim nec interdum suscipit, ipsum augue varius massa, in vestibulum ante urna quis orci. Cras tristique mollis pellentesque. Sed maximus massa at nisl lobortis efficitur vel nec risus. Aenean tincidunt et lectus vel dapibus. Fusce pellentesque id felis id faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet nibh non elit vulputate placerat. Sed vitae lacinia ligula. Sed suscipit eu nulla sit amet feugiat. Nullam ut ultricies nulla, at convallis massa. Pellentesque tempor aliquet dolor, ac consectetur lorem ornare id. Vestibulum sit amet facilisis elit, sit amet rhoncus felis. Nunc rhoncus porttitor sollicitudin. Quisque eu leo metus. Curabitur gravida nibh eu nunc tempus suscipit. Donec quis magna id lacus eleifend volutpat. Suspendisse ac mattis velit, vel sagittis metus. Etiam non massa eu lectus maximus elementum. Etiam id aliquet quam. Vestibulum id lacinia ex, in rutrum metus. Donec varius auctor ligula.\n\n### This is a H3. Use it for subheads and subsections.\n\nDonec malesuada, augue eu blandit porta, metus metus auctor leo, non dapibus felis odio non tortor. Mauris sem orci, tristique eget [this is an inline link](https://www.google.com) placerat non, eleifend tempor dolor. Quisque sed nisl elit. Praesent pulvinar id urna quis cursus. In hac habitasse platea dictumst. Mauris sed odio magna. Duis felis turpis, posuere at erat nec, condimentum luctus nibh. Nam leo ante, tempor ut tellus vel, lacinia aliquam velit. Mauris ut purus in nisl suscipit feugiat.\n\n***\n\nPellentesque tempor aliquet dolor, ac consectetur lorem ornare id. Vestibulum sit amet facilisis elit, sit amet rhoncus felis. Nunc rhoncus porttitor sollicitudin. Quisque eu leo metus. Curabitur gravida nibh eu nunc tempus suscipit. Donec quis magna id lacus eleifend volutpat. Suspendisse ac mattis velit, vel sagittis metus. Etiam non massa eu lectus maximus elementum. Etiam id aliquet quam. Vestibulum id lacinia ex, in rutrum metus. Donec varius auctor ligula.\n\n>\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices dignissim gravida. Curabitur pharetra turpis risus, eu bibendum ipsum maximus sed. Ut vel euismod elit. Proin neque erat, sagittis quis tortor ut, pharetra semper ligula. Nunc vehicula, diam in consectetur vestibulum, sem felis imperdiet nisi, ac interdum mi erat sit amet sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi ut nulla ornare, posuere ligula eget, convallis elit. Nullam cursus vel ex et lacinia. Nunc feugiat dictum purus, faucibus malesuada risus gravida a. Morbi a sagittis lectus. Nullam lacus mauris, luctus eget pharetra in, aliquet quis lorem. Morbi ornare rhoncus dapibus. Praesent eu ipsum a metus pretium dictum. Fusce egestas nibh mauris, at condimentum ex fringilla quis. Duis in accumsan orci. Morbi leo ligula, tincidunt ac diam ut, hendrerit lobortis metus.\"\n\nSed sit amet enim placerat, faucibus nisl et, porta ipsum. Integer efficitur nulla id orci varius, in lobortis magna viverra. Praesent volutpat nunc velit, eget dignissim orci sagittis vitae. Aliquam erat volutpat. Praesent sollicitudin, enim nec interdum suscipit, ipsum augue varius massa, in vestibulum ante urna quis orci. Cras tristique mollis pellentesque. Sed maximus massa at nisl lobortis efficitur vel nec risus. Aenean tincidunt et lectus vel dapibus. Fusce pellentesque id felis id faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet nibh non elit vulputate placerat. Sed vitae lacinia ligula. Sed suscipit eu nulla sit amet feugiat. Nullam ut ultricies nulla, at convallis massa.\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "advanced",
+            "relPath": "index.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Home",
+                "sections": [
+                    {
+                        "type": "section_hero",
+                        "title": "This is a hero headline.",
+                        "section_id": "hero",
+                        "subtitle": "### This is a super-cool hero subhead.",
+                        "image": "images/avatar.png",
+                        "image_alt": "Author avatar",
+                        "stackbit_model_type": "object"
+                    },
+                    {
+                        "type": "section_content",
+                        "title": "Text",
+                        "section_id": "intro",
+                        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla orci diam, elementum consectetur elit non, tempus varius leo. In ut bibendum mauris. Vestibulum mattis pharetra enim. Maecenas ornare vulputate nisi sed condimentum. Fusce sit amet cursus nunc. Vivamus malesuada posuere mollis. Aliquam facilisis neque eget ligula aliquam consequat.\n### This is an H3. Use it for subheads and subsections.\nDonec malesuada, augue eu blandit porta, metus metus auctor leo, non dapibus felis odio non tortor. Mauris sem orci, tristique eget [this is an inline link](#) placerat non, eleifend tempor dolor. Quisque sed nisl elit. Praesent pulvinar id urna quis cursus. In hac habitasse platea dictumst. Mauris sed odio magna. Duis felis turpis, posuere at erat nec, condimentum luctus nibh. Nam leo ante, tempor ut tellus vel, lacinia aliquam velit. Mauris ut purus in nisl suscipit feugiat.\nPellentesque tempor aliquet dolor, ac consectetur lorem ornare id. Vestibulum sit amet facilisis elit, sit amet rhoncus felis. Nunc rhoncus porttitor sollicitudin. Quisque eu leo metus. Curabitur gravida nibh eu",
+                        "stackbit_model_type": "object"
+                    },
+                    {
+                        "type": "section_posts",
+                        "title": "Recent Posts",
+                        "section_id": "posts",
+                        "has_more_link": true,
+                        "more_link_text": "Read more",
+                        "stackbit_model_type": "object"
+                    },
+                    {
+                        "type": "section_content",
+                        "title": "A Cat",
+                        "section_id": "cat",
+                        "image": "images/art.svg",
+                        "image_alt": "Geometric pattern",
+                        "content": "Hi this is my text and image block. Vis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat commodo. \nInterdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. \nId massa aliquet arcu accumsan lorem amet accumsan.\n\nInterdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet.",
+                        "stackbit_model_type": "object"
+                    }
+                ],
+                "layout": "advanced",
+                "stackbit_url_path": "/",
+                "stackbit_dir": "content/pages"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "page",
+            "relPath": "ipsum.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Ipsum dolor sit amet",
+                "subtitle": "Aliquam lobortis faucibus blandit",
+                "layout": "page",
+                "stackbit_url_path": "/ipsum",
+                "stackbit_dir": "content/pages",
+                "content": "\nVis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat commodo. Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan.\n\nAmet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan commodo odio cubilia ac eu interdum placerat placerat arcu commodo lobortis adipiscing semper ornare pellentesque.\n\nAmet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet blandit adipiscing arcu ante.\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "post",
+            "relPath": "posts/magna.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Magna etiam sed lorem ipsum dolor amet",
+                "subtitle": "A cautionary tale about Magna etiam",
+                "thumb_img_path": "images/art.svg",
+                "thumb_img_alt": "Geometric pattern",
+                "excerpt": "Phasellus in ante vitae nibh porttitor tempus vitae ut ante. Vestibulum blandit dolor elementum viverra. Sed quat a diam, aliquet tempus felis. Phasellus et magna vitae nibh porttitor tempus vitae.",
+                "date": "2016-09-04",
+                "layout": "post",
+                "stackbit_url_path": "/posts/magna",
+                "stackbit_dir": "content/pages",
+                "content": "\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla orci diam, elementum consectetur elit non, tempus varius leo. In ut bibendum mauris. Vestibulum mattis pharetra enim. Maecenas ornare vulputate nisi sed condimentum. Fusce sit amet cursus nunc. Vivamus malesuada posuere mollis. Aliquam facilisis neque eget ligula aliquam consequat.\n\n![Block Image](/images/art.svg)\n\nPellentesque tempor aliquet dolor, ac consectetur lorem ornare id. Vestibulum sit amet facilisis elit, sit amet rhoncus felis. Nunc rhoncus porttitor sollicitudin. Quisque eu leo metus. Curabitur gravida nibh eu nunc tempus suscipit. Donec quis magna id lacus eleifend volutpat. Suspendisse ac mattis velit, vel sagittis metus. Etiam non massa eu lectus maximus elementum. Etiam id aliquet quam. Vestibulum id lacinia ex, in rutrum metus. Donec varius auctor ligula.\n\nSed sit amet enim placerat, faucibus nisl et, porta ipsum. Integer efficitur nulla id orci varius, in lobortis magna viverra. Praesent volutpat nunc velit, eget dignissim orci sagittis vitae. Aliquam erat volutpat. Praesent sollicitudin, enim nec interdum suscipit, ipsum augue varius massa, in vestibulum ante urna quis orci. Cras tristique mollis pellentesque. Sed maximus massa at nisl lobortis efficitur vel nec risus.\n\n### This is a H3. Use it for subheads and subsections.\n\nDonec malesuada, augue eu blandit porta, metus metus auctor leo, non dapibus felis odio non tortor. Mauris sem orci, tristique eget [this is an inline link](https://www.google.com) placerat non, eleifend tempor dolor. Quisque sed nisl elit. Praesent pulvinar id urna quis cursus. In hac habitasse platea dictumst. Mauris sed odio magna. Duis felis turpis, posuere at erat nec, condimentum luctus nibh. Nam leo ante, tempor ut tellus vel, lacinia aliquam velit. Mauris ut purus in nisl suscipit feugiat.\n\n***\n\nPellentesque tempor aliquet dolor, ac consectetur lorem ornare id. Vestibulum sit amet facilisis elit, sit amet rhoncus felis. Nunc rhoncus porttitor sollicitudin. Quisque eu leo metus. Curabitur gravida nibh eu nunc tempus suscipit. Donec quis magna id lacus eleifend volutpat. Suspendisse ac mattis velit, vel sagittis metus. Etiam non massa eu lectus maximus elementum. Etiam id aliquet quam. Vestibulum id lacinia ex, in rutrum metus. Donec varius auctor ligula.\n\n>\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices dignissim gravida. Curabitur pharetra turpis risus, eu bibendum ipsum maximus sed. Ut vel euismod elit. Proin neque erat, sagittis quis tortor ut, pharetra semper ligula. Nunc vehicula, diam in consectetur vestibulum, sem felis imperdiet nisi, ac interdum mi erat sit amet sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi ut nulla ornare, posuere ligula eget, convallis elit. Nullam cursus vel ex et lacinia. Nunc feugiat dictum purus, faucibus malesuada risus gravida a. Morbi a sagittis lectus. Nullam lacus mauris, luctus eget pharetra in, aliquet quis lorem. Morbi ornare rhoncus dapibus. Praesent eu ipsum a metus pretium dictum. Fusce egestas nibh mauris, at condimentum ex fringilla quis. Duis in accumsan orci. Morbi leo ligula, tincidunt ac diam ut, hendrerit lobortis metus.\"\n\nSed sit amet enim placerat, faucibus nisl et, porta ipsum. Integer efficitur nulla id orci varius, in lobortis magna viverra. Praesent volutpat nunc velit, eget dignissim orci sagittis vitae. Aliquam erat volutpat. Praesent sollicitudin, enim nec interdum suscipit, ipsum augue varius massa, in vestibulum ante urna quis orci. Cras tristique mollis pellentesque. Sed maximus massa at nisl lobortis efficitur vel nec risus. Aenean tincidunt et lectus vel dapibus. Fusce pellentesque id felis id faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet nibh non elit vulputate placerat. Sed vitae lacinia ligula. Sed suscipit eu nulla sit amet feugiat. Nullam ut ultricies nulla, at convallis massa.\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "post",
+            "relPath": "posts/sed.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Sed feugiat et mauris adipiscing dolor",
+                "thumb_img_path": "images/art.svg",
+                "thumb_img_alt": "Geometric pattern",
+                "excerpt": "Phasellus in ante vitae nibh porttitor tempus vitae ut ante. Vestibulum blandit dolor elementum viverra.",
+                "date": "2016-08-28",
+                "layout": "post",
+                "stackbit_url_path": "/posts/sed",
+                "stackbit_dir": "content/pages",
+                "content": "\nVis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat commodo. Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan.\n\nAmet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan commodo odio cubilia ac eu interdum placerat placerat arcu commodo lobortis adipiscing semper ornare pellentesque.\n\nAmet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet blandit adipiscing arcu ante.\n"
+            }
+        },
+        {
+            "modelType": "page",
+            "modelName": "post",
+            "relPath": "posts/tellus.md",
+            "data": {
+                "stackbit_model_type": "page",
+                "title": "Tellus magna dolore sed elementum",
+                "thumb_img_path": "images/art.svg",
+                "thumb_img_alt": "Geometric pattern",
+                "excerpt": "Phasellus in ante vitae nibh porttitor tempus vitae ut ante. Vestibulum blandit dolor elementum viverra. Sed quat a diam, aliquet tempus felis. Phasellus et magna vitae nibh porttitor tempus vitae.",
+                "date": "2016-08-22",
+                "layout": "post",
+                "stackbit_url_path": "/posts/tellus",
+                "stackbit_dir": "content/pages",
+                "content": "\nVis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat commodo. Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan.\n\nAmet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. Id massa aliquet arcu accumsan lorem amet accumsan commodo odio cubilia ac eu interdum placerat placerat arcu commodo lobortis adipiscing semper ornare pellentesque.\n\nAmet nibh adipiscing adipiscing. Commodo ante vis placerat interdum massa massa primis. Tempus condimentum tempus non ac varius cubilia adipiscing placerat lorem turpis at. Aliquet lorem porttitor interdum. Amet lacus. Aliquam lobortis faucibus blandit ac phasellus. In amet magna non interdum volutpat porttitor metus a ante ac neque. Nisi turpis. Commodo col. Interdum adipiscing mollis ut aliquam id ante adipiscing commodo integer arcu amet blandit adipiscing arcu ante.\n"
+            }
+        }
+    ]
+}
